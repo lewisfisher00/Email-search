@@ -15,6 +15,11 @@ def topTen(key_values):
     print(key_values[0:10])
 
 
+def displayAll(key_values):
+    key_values.sort(key=lambda x: -x[1])
+    print(key_values)
+
+
 fileName = "sample.txt"
 with open(fileName) as file:
     textData = file.read()
@@ -40,8 +45,10 @@ key_values = []
 for key_value_tup in domains.items():
     key_values.append(key_value_tup)
 
-userChoice = input("1. Display top 10 domains \n2. Set base frequency \n")
+userChoice = input("1. Display all domains in file \n2. Display top 10 domains \n3. Set base frequency \n")
 if userChoice == '1':
-    topTen(key_values)
+    displayAll(key_values)
 if userChoice == '2':
+    topTen(key_values)
+if userChoice == '3':
     setFrequency(key_values)
