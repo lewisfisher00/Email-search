@@ -1,9 +1,19 @@
 import re
-# def setFrequency():
+
+
+def setFrequency(key_values):
+    freq = int(input("Enter base frequency:"))
+    listToPrint = []
+    for elem in key_values:
+        if int(elem[1]) >= freq:
+            listToPrint.append(elem)
+    print(listToPrint)
+
 
 def topTen(key_values):
     key_values.sort(key=lambda x: -x[1])
     print(key_values[0:10])
+
 
 fileName = "sample.txt"
 with open(fileName) as file:
@@ -30,3 +40,8 @@ key_values = []
 for key_value_tup in domains.items():
     key_values.append(key_value_tup)
 
+userChoice = input("1. Display top 10 domains \n2. Set base frequency \n")
+if userChoice == '1':
+    topTen(key_values)
+if userChoice == '2':
+    setFrequency(key_values)
