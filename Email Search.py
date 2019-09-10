@@ -9,7 +9,15 @@ with open(fileName) as file:
 #         counter = counter + 1
 # print(counter)
 
-# matches = re.findall('\S*@softwire.com', textData)
+# matches = re.findall('\S*@softwire.com$', textData)
+# counter = 0
 # for match in matches:
-#     print(match)
+#     counter = counter + 1
+# print(counter)
 
+matches = re.findall(r'\S+@(\w+\.\S+)', textData)
+domains = {}
+for match in matches:
+    domains[match] = domains.get(match, 0) + 1
+
+print(domains)
