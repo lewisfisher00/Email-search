@@ -1,5 +1,5 @@
 import re
-
+import requests
 
 def setFrequency(key_values):
     freq = int(input("Enter base frequency:"))
@@ -20,9 +20,12 @@ def displayAll(key_values):
     print(key_values)
 
 
-fileName = "sample.txt"
-with open(fileName) as file:
-    textData = file.read()
+# fileName = "sample.txt"
+# with open(fileName) as file:
+#     textData = file.read()
+
+urlToRead = "https://www.bradonforest.org.uk/Contact-Us/"
+response = (requests.get(urlToRead)).text
 
 # counter = 0
 # for i in range(len(textData)):
@@ -36,7 +39,7 @@ with open(fileName) as file:
 #     counter = counter + 1
 # print(counter)
 
-matches = re.findall(r'\S+@(\w+\.\S+)', textData)
+matches = re.findall(r'\S+@(\w+[\.\w+]+)', response)
 domains = {}
 for match in matches:
     domains[match] = domains.get(match, 0) + 1
