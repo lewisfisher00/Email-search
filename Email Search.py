@@ -1,4 +1,10 @@
 import re
+# def setFrequency():
+
+def topTen(key_values):
+    key_values.sort(key=lambda x: -x[1])
+    print(key_values[0:10])
+
 fileName = "sample.txt"
 with open(fileName) as file:
     textData = file.read()
@@ -24,5 +30,3 @@ key_values = []
 for key_value_tup in domains.items():
     key_values.append(key_value_tup)
 
-key_values.sort(key=lambda x: -x[1])
-print(key_values[0:10])
