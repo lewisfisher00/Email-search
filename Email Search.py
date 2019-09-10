@@ -19,4 +19,10 @@ matches = re.findall(r'\S+@(\w+\.\S+)', textData)
 domains = {}
 for match in matches:
     domains[match] = domains.get(match, 0) + 1
-print(domains)
+
+key_values = []
+for key_value_tup in domains.items():
+    key_values.append(key_value_tup)
+
+key_values.sort(key=lambda x: -x[1])
+print(key_values[0:10])
