@@ -25,7 +25,7 @@ def displayAll(key_values):
 #     textData = file.read()
 
 urlToRead = "https://www.bradonforest.org.uk/Contact-Us/"
-response = (requests.get(urlToRead)).text
+textData = (requests.get(urlToRead)).text
 
 # counter = 0
 # for i in range(len(textData)):
@@ -39,7 +39,7 @@ response = (requests.get(urlToRead)).text
 #     counter = counter + 1
 # print(counter)
 
-matches = re.findall(r'\S+@(\w+[\.\w+]+)', response)
+matches = re.findall(r'\S+@(\w+[\.\w+]+)', textData)
 domains = {}
 for match in matches:
     domains[match] = domains.get(match, 0) + 1
